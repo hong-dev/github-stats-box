@@ -30,7 +30,6 @@ async function main() {
 
 async function getStats() {
     const stats = {
-        name: '',
         totalPRs: 0,
         totalCommits: 0,
         totalIssues: 0,
@@ -40,7 +39,6 @@ async function getStats() {
 
     const user = await userInfoFetcher(githubToken).then((res) => res.data.data.viewer);
 
-    stats.name = user.name || user.login;
     stats.totalPRs = user.pullRequests.totalCount;
     stats.totalIssues = user.issues.totalCount;
     stats.contributedTo = user.repositoriesContributedTo.totalCount;
@@ -89,7 +87,7 @@ async function updateGist(stats) {
     return request('PATCH /gists/:gist_id', {
         files: {
             [filename]: {
-                filename: `${stats.name}'s GitHub Stats`,
+                filename: `GitHub Stats 🌱`,
                 content: gistContent,
             },
         },
