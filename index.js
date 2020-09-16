@@ -57,7 +57,7 @@ async function getStats() {
 }
 
 async function updateGist(stats) {
-    const humanize = (n) => (n >= 1000 ? numeral(n).format(kFormat ? '0.0a' : '0,0') : n);
+    const humanize = (n) => (n >= 1000 ? numeral(n).format(kFormat ? '0.0a' : '0,0') : n); 
 
     const gistContent =
         [
